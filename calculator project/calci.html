@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+     <link rel="stylesheet" href="./calsi.css"/>
+</head>
+<body>
+    <div class="main">
+        <input type="text" placeholder="0" id="inputbox">
+    <div>
+        <button class="operator" >AC</button>
+        <button class="operator">DEL</button>
+        <button class="operator">%</button>
+        <button class="operator">/</button>
+
+    </div>
+    <div>
+         <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">*</button>
+
+    </div>
+    <div>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button class="operator">-</button>
+</div>
+<div>
+     <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button class="operator">+</button>
+</div>
+<div>
+     <button>00</button>
+    <button>0</button>
+    <button>.</button>
+    <button class="equal">=</button>
+</div>
+</div>
+<script>
+    let input = document.getElementById("inputbox");
+let buttons = document.querySelectorAll("button");
+let string = "";
+
+buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        let value = e.target.innerHTML;
+
+        if (value === "=") {
+            try {
+                string = String(eval(string));
+                input.value = string;
+            } catch {
+                input.value = "Error";
+                string = "";
+            }
+        }
+        else if (value === "AC") {
+            string = "";
+            input.value = "";
+        }
+        else if (value === "DEL") {
+            string = string.slice(0, -1);
+            input.value = string;
+        }
+        else {
+            string += value;
+            input.value = string;
+        }
+    });
+});
+
+</script>                                                                                          
+</div>
+</body>
+</html>
